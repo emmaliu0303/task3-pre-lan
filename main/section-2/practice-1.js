@@ -1,5 +1,5 @@
 'use strict';
-
+/**
 module.exports = function countSameElements(collection) {
   //return '实现练习要求，并改写该行代码。';
   let A = new Set(collection);
@@ -17,4 +17,25 @@ module.exports = function countSameElements(collection) {
       result.push(ans);
   }
   return result;
+}
+ **/
+function find(collection, ch) {
+    for (let item of collection) {
+        if (item.key === ch){
+            return item;
+        }
+    }
+    return null;
+}
+module.exports = function countSameElements(collection) {
+    let ans = [];
+    for (let item of collection) {
+        let obj = find (ans,item);
+        if (obj){
+            obj.count++;
+        }else {
+            ans.push({key:item, count:1});
+        }
+    }
+    return ans;
 }
